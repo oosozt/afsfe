@@ -31,6 +31,10 @@ useEffect(() => {
         .catch(err => console.error(err));
     }
   }
+fetchData();
+}, [activate]);
+
+useEffect(() => {
   const addData = async () => {
     if(activate2 === true) {
       await fetch(
@@ -43,10 +47,8 @@ useEffect(() => {
         .catch(err => console.error(err));
     }
   }   
-fetchData();
 addData();
-}, [activate]);
-
+}, [activate2]);
 
   return (
     <div className="App">
@@ -54,30 +56,46 @@ addData();
       <Deneme/>
       <button onClick = {()=> setActivated(true)}>Press To Retrieve Student Data</button>
       <button onClick = {()=> setActivated2(true)}>Press To Add a Student</button>
-      <input 
+      <div>
+        <h3>name:</h3>
+        <input 
           type="text" 
-          id="name" 
+          id="name"
+          placeholder="name" 
           value={name} 
           onChange={(e) => setName(e.target.value)} 
         />
-      <input 
+      </div>
+      <div>
+        <h3>surname:</h3>
+        <input 
           type="text" 
-          id="surname" 
+          id="surname"
+          placeholder="surname"
           value={surname} 
           onChange={(e) => setSurname(e.target.value)} 
         />
-      <input 
+      </div>
+      <div>
+        <h3>gpa:</h3>
+        <input 
           type="text" 
           id="gpa" 
+          placeholder="gpa"
           value={gpa} 
           onChange={(e) => setGpa(e.target.value)} 
         />
+      </div>
+      <div>
+        <h3>studentId:</h3>
         <input 
           type="text" 
           id="studentId" 
+          placeholder="studentId"
           value={studentId} 
           onChange={(e) => setStudentId(e.target.value)} 
         />
+      </div>
     </div>
   );
 }
